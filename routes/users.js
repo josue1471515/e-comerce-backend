@@ -3,7 +3,6 @@ const User = require('../models/Users');
 
 
 router.get('/', (req, res) => {
-    console.log('hola sssssssssss')
     User.find(function (err, users) {
         if (err) {
             console.log(err);
@@ -32,7 +31,7 @@ router.post('/add', (req, res) => {
     user.save()
     .then(user=> res.status(200).json({'user':'User added successfuly'}))
     .catch(err=> {
-        res.status(400).send('Adding New user failed');
+        res.status(400).send(err);
     });
     
 });
